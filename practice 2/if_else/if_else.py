@@ -1,30 +1,39 @@
+#1 example
 a = 200
 b = 33
 if b > a:
   print("b is greater than a")
 else:
   print("b is not greater than a")
-  
-  
-  age = 20
-if age >= 18:
-  print("You are an adult")
-  print("You can vote")
-  print("You have full legal rights")
-  
-  a = 200
-b = 33
-c = 500
-if a > b or a > c:
-  print("At least one of the conditions is True")
-  
-  age = 25
-has_license = True
 
-if age >= 18:
-  if has_license:
-    print("You can drive")
-  else:
-    print("You need a license")
+#2 example
+number = 7
+
+if number % 2 == 0:
+  print("The number is even")
 else:
-  print("You are too young to drive")
+  print("The number is odd")
+
+#3 example
+username = "Emil"
+
+if len(username) > 0:
+  print(f"Welcome, {username}!")
+else:
+  print("Error: Username cannot be empty")
+
+#4 example
+number = int(input("Enter a number: "))
+
+if number % 2 == 0:
+    print("Even number")
+else:
+    print("Odd number")
+
+#5 example
+weather = "rainy"
+
+if weather == "sunny":
+    print("Go for a walk")
+else:
+    print("Stay at home")
