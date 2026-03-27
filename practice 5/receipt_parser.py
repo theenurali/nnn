@@ -2,7 +2,7 @@ import re
 import json
 
 # 1. Чтение текста из файла raw.txt (для Windows используем r"" для пути)
-with open(r'C:\Users\b_zulkharnai\ало\raw.txt', 'r', encoding='utf-8') as file:
+with open(r'C:\Users\b_zulkharnai/\ало\raw.txt', 'r', encoding='utf-8') as file:
     lines = [line.strip() for line in file if line.strip()]  # убираем пустые строки
 
 text = "\n".join(lines)
