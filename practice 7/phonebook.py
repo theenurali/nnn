@@ -1,5 +1,6 @@
 import csv
 from connect import get_connection
+from psycopg2 import errors
 
 def create_table():
     conn = get_connection()
@@ -18,17 +19,15 @@ def create_table():
 def insert_from_csv(filename):
     conn = get_connection()
     cur = conn.cursor()
-    with open(filename, "r", newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
+    with open(filename, "r") as f:
+        command = "INSERT INTO phonebook (first_name, phone) VALUES (%s, %s)"
+        reader = csv.reader(f)
         for row in reader:
-            cur.execute(
-                """
-                INSERT INTO phonebook (first_name, phone)
-                VALUES (%s, %s)
-                ON CONFLICT (phone) DO NOTHING
-                """,
-                (row["first_name"], row["phone"])
-            )
+            name, phone = row
+            try:
+                cur.execute(command, (name, phone))
+            except errors.UniqueViolation:
+                print("Номер уже существует!")
     conn.commit()
     cur.close()
     conn.close()
